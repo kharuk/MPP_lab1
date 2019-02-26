@@ -1,0 +1,27 @@
+<h3>Sessions</h3>
+
+<a href="/sessions/new" class="btn btn-success" role="button">Add</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">cinema</th>
+      <th scope="col">film</th>
+      <th scope="col">date</th> 
+    </tr>
+  </thead>
+  <tbody>
+    {{#each list}}
+    <tr>
+        <th scope="row">{{this.id}}</th>
+        <td>{{this.cinema_id}}</td>
+        <td>{{this.film_id}}</td>
+        <td>{{this.date}}</td>
+        <td>
+          <a href="/sessions/{{this.id}}/edit" class="btn btn-sm btn-info edit" role="button">Edit</a>
+          <a href="/sessions/{{this.id}}/delete" class="btn btn-sm btn-danger delete" role="button">Delete</a>
+        </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
