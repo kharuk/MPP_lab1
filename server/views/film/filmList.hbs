@@ -1,0 +1,27 @@
+<h3>Films</h3>
+
+<a href="/films/new" class="btn btn-success" role="button">Add</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">name</th>
+      <th scope="col">description</th>
+      <th scope="col">director</th> 
+    </tr>
+  </thead>
+  <tbody>
+    {{#each list}}
+    <tr>
+        <th scope="row">{{this.id}}</th>
+        <td>{{this.name}}</td>
+        <td>{{this.description}}</td>
+        <td>{{this.director}}</td>
+        <td>
+          <a href="/films/{{this.id}}/edit" class="btn btn-sm btn-info edit" role="button">Edit</a>
+          <a href="/films/{{this.id}}/delete" class="btn btn-sm btn-danger delete" role="button">Delete</a>
+        </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

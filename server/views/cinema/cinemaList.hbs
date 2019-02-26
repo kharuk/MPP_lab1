@@ -1,0 +1,27 @@
+<h3>Cinemas</h3>
+
+<a href="/cinemas/new" class="btn btn-success" role="button">Add</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">name</th>
+      <th scope="col">phone</th>
+      <th scope="col">address</th> 
+    </tr>
+  </thead>
+  <tbody>
+    {{#each list}}
+    <tr>
+        <th scope="row">{{this.id}}</th>
+        <td>{{this.name}}</td>
+        <td>{{this.phone}}</td>
+        <td>{{this.address}}</td>
+        <td>
+          <a href="/cinemas/{{this.id}}/edit" class="btn btn-sm btn-info edit" role="button">Edit</a>
+          <a href="/cinemas/{{this.id}}/delete" class="btn btn-sm btn-danger delete" role="button">Delete</a>
+        </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
