@@ -1,42 +1,34 @@
 <h3>{{viewTitle}}</h3>
 
 {{#if session.id}}
-<form action="/sessions/{{session.id}}/edit" method="POST" autocomplete="off">
+<form action="/sessions/{{session.id}}/edit" method="POST" autocomplete="off" class="needs-validation" novalidate>
 {{else}}
-<form action="/sessions/new" method="POST" autocomplete="off">
+<form action="/sessions/new" method="POST" autocomplete="off" class="needs-validation" novalidate>
 {{/if}}
     <div>
       <div class="form-group col-md-6">
         <label for="select1">Film select</label>
-        <select name="Film_Id"  class="form-control" id="select1">
+        <select name="Film_Id"  class="form-control" id="select1" required>
           {{#each film_info}}
           <option value="{{ id }}">{{ name }} </option>
           {{/each}}
         </select>
+        <div class="invalid-feedback">Please choose film</div>  
       </div>
       <div class="form-group col-md-6">
         <label for="select2">Cinema select</label>
-        <select name="Cinema_Id" class="form-control" id="select2">
+        <select name="Cinema_Id" class="form-control" id="select2" required>
           {{#each cinema_info}}
           <option value="{{ id }}">{{ name }}</option>
           {{/each}}
         </select>
+        <div class="invalid-feedback">Please choose cinema</div>  
       </div>
-     <!--   <div class="form-group">
-          <input type="text" name="class_description" class="form-control product_name" placeholder="Class description" required>
-        </div>
-        <div class="form-group col-md-6">
-            <label>Name</label>
-            <input type="text" class="form-control" name="name" placeholder="name" value="{{session.name}}">
-        </div>
-        <div class="form-group col-md-6">
-            <label>Description</label>
-            <input type="text" class="form-control" name="description" placeholder="description" value="{{session.description}}">
-        </div>-->
-        <div class="form-group col-md-6">
-            <label>Date</label>
-            <input type="text" class="form-control" name="date" placeholder="date" value="{{session.date}}">
-        </div>
+      <div class="form-group col-md-6">
+          <label>Date</label>
+          <input type="date" class="form-control" name="date" placeholder="date" value="{{session.date}}" required>
+        <div class="invalid-feedback">Please input date</div> 
+      </div>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-info"> Submit</button>
