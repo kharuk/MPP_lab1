@@ -3,8 +3,17 @@ const Cinema = require('../models/cinema');
 const Session  = require('../models/session');
 
 function getSessions(req, res) {
-  Session.findAll()
+  Session.findAll(/*{
+    include: [{model: Film,  required: true,}, {model: Cinema,  required: true,}, ],
+    attributes: [['sessions.id', 'sessions.id'],['sessions.date', 'sessions.date'],['cinemas.name', 'cinemas.name'],['films.name', 'films.name']],
+    }*/)
   .then(sessions => {
+   
+    sessions.map( element => {
+      element.date.toLocaleString("ru");
+    //  console.log('element ',element);
+    })
+   // console.log(sessions);
     res.render('./session/sessionList', {list: sessions})
   })
   .catch(err => res.send(err));
@@ -23,7 +32,7 @@ function addNewSession(req, res) {
     let film_info = films;
     Cinema.findAll()
     .then(cinemas => {
-      console.log('qwerty',{film_info: film_info, cinema_info: cinemas});
+     // console.log('qwerty',{film_info: film_info, cinema_info: cinemas});
       res.render("./session/create-edit", {film_info: films, cinema_info: cinemas});
     })
    // console.log('aaa', films);
@@ -42,7 +51,18 @@ function createSession(req, res) {
 
 function showSession(req, res) {
   Session.findById(req.params.id)
-  .then((session) => res.render("./session/create-edit", {viewTitle: "Update Session", session}))
+  .then((session) => {
+    Film.findAll()
+    .then(films => {
+      let film_info = films;
+      Cinema.findAll()
+      .then(cinemas => {
+        console.log('qwerty',{film_info: film_info, cinema_info: cinemas});
+        res.render("./session/create-edit", {viewTitle: "Update Session", film_info: films, cinema_info: cinemas, session});
+      })
+ //   res.render("./session/create-edit", {viewTitle: "Update Session", session})
+    })
+  })
   .catch(err => res.send(err));
 }
 
