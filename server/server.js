@@ -26,6 +26,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(router);
 
-app.listen(8000, function () {
-  console.log('Server is running at port 8000');
-})
+
+const PORT = process.env.PORT || 3000;
+app.listen(8080, () => {
+  console.log(`Server started on port 8080`);
+});

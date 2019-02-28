@@ -3,7 +3,7 @@ services:
   web:
     build: .
     ports:
-      - "3000:3000"
+      - "8080:8080"
     depends_on: 
       - db
       
@@ -14,9 +14,6 @@ services:
       MYSQL_DATABASE: 'cinema_db'
       MYSQL_USER: 'root'
       MYSQL_PASSWORD: '6852922'
-      MYSQL_ROOT_PASSWORD: '6852922'
-    ports:
-      - "3306:3306"
     volumes:
       - ./mysql
 
