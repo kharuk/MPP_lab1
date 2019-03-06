@@ -13,7 +13,7 @@ services:
     environment:
       MYSQL_DATABASE: 'cinema_db'
       MYSQL_USER: 'root'
-      MYSQL_PASSWORD: '6852922'
+      MYSQL_ROOT_PASSWORD: '6852922'
     volumes:
       - ./mysql
 
